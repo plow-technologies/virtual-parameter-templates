@@ -1,8 +1,33 @@
-[ { vpids =
+let Parameter = https://raw.githubusercontent.com/plow-technologies/virtual-parameter-prelude/master/InputParam.dhall
+
+in let NeededSources = { yesterdaysVolume:Parameter,
+                         historicFastArrivalsCount:Parameter,
+						 historicGoodArrivalsCount:Parameter,
+						 historicSlowArrivalsCount:Parameter,
+						 historicNoArrivalsCount:Parameter,
+						 historicCyclesCount:Parameter,
+						 currentModeCountdownSec:Parameter,
+						 tubingPressurePSIG:Parameter,
+						 casingPressurePSIG:Parameter,
+						 linePressurePSIG:Parameter
+						 
+                         }
+				 
+in let testSource = { yesterdaysVolume = 172978,
+                   historicFastArrivalsCount = 178360,
+				   historicGoodArrivalsCount = 178361,
+				   historicSlowArrivalsCount = 178362,
+				   historicNoArrivalsCount = 178363,
+				   historicCyclesCount= 178364,
+				   currentModeCountdownSec = 186524,
+				   tubingPressurePSIG = 172971,
+				   casingPressurePSIG = 172970,
+				   linePressurePSIG = 172974} 					 
+in \(neededSources:NeededSources) -> [ { vpids =
       [ +3557 ] : List Integer
   , vparameterInfo =
       { sources =
-          [ { pid = +172978, location = +2110, company = +42, site = +321 }
+          [ { pid = +1111 , location = +2110, company = +42, site = +321 }
           ] : List
               { pid :
                   Integer
