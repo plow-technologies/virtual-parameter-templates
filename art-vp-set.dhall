@@ -24,7 +24,7 @@ in let testSource = { yesterdaysVolume = 172978,
 				   casingPressurePSIG = 172970,
 				   linePressurePSIG = 172974} 					 
 in \(neededSources:NeededSources) -> [ { vpids =
-      [ +3557 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.yesterdaysVolume
@@ -42,21 +42,13 @@ in \(neededSources:NeededSources) -> [ { vpids =
       [ +3780 ] : List Integer
   , vparameterInfo =
       { sources =
-          [ { pid = +178360, location = +2110, company = +42, site = +321 }
-          , { pid = +178361, location = +2110, company = +42, site = +321 }
-          , { pid = +178362, location = +2110, company = +42, site = +321 }
-          , { pid = +178363, location = +2110, company = +42, site = +321 }
-          , { pid = +178364, location = +2110, company = +42, site = +321 }
-          ] : List
-              { pid :
-                  Integer
-              , location :
-                  Integer
-              , company :
-                  Integer
-              , site :
-                  Integer
-              }
+          [ neededSources.historicFastArrivalsCount
+          , neededSources.historicGoodArrivalsCount
+          , neededSources.historicSlowArrivalsCount
+          , neededSources.historicNoArrivalsCount
+          , neededSources.historicCyclesCount
+          ] : List VpidSource
+              
       , name =
           "Yesterday Arrivals"
       , desc =
