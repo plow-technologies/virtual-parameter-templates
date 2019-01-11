@@ -1,15 +1,15 @@
-let Parameter = https://raw.githubusercontent.com/plow-technologies/virtual-parameter-prelude/master/InputParam.dhall
+let VpidSource = {company:Integer, site:Integer, location:Integer, pid:Integer }
 
-in let NeededSources = { yesterdaysVolume:Parameter,
-                         historicFastArrivalsCount:Parameter,
-						 historicGoodArrivalsCount:Parameter,
-						 historicSlowArrivalsCount:Parameter,
-						 historicNoArrivalsCount:Parameter,
-						 historicCyclesCount:Parameter,
-						 currentModeCountdownSec:Parameter,
-						 tubingPressurePSIG:Parameter,
-						 casingPressurePSIG:Parameter,
-						 linePressurePSIG:Parameter
+in let NeededSources = { yesterdaysVolume:VpidSource,
+                         historicFastArrivalsCount:VpidSource,
+						 historicGoodArrivalsCount:VpidSource,
+						 historicSlowArrivalsCount:VpidSource,
+						 historicNoArrivalsCount:VpidSource,
+						 historicCyclesCount:VpidSource,
+						 currentModeCountdownSec:VpidSource,
+						 tubingPressurePSIG:VpidSource,
+						 casingPressurePSIG:VpidSource,
+						 linePressurePSIG:VpidSource
 						 
                          }
 				 
@@ -27,17 +27,9 @@ in \(neededSources:NeededSources) -> [ { vpids =
       [ +3557 ] : List Integer
   , vparameterInfo =
       { sources =
-          [ { pid = +1111 , location = +2110, company = +42, site = +321 }
-          ] : List
-              { pid :
-                  Integer
-              , location :
-                  Integer
-              , company :
-                  Integer
-              , site :
-                  Integer
-              }
+          [ neededSources.yesterdaysVolume
+          ] : List VpidSource
+              
       , name =
           "Percent of Target"
       , desc =
