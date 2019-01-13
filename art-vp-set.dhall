@@ -13,17 +13,8 @@ in let NeededSources = { yesterdaysVolume:VpidSource,
 						 
                          }
 				 
-in let testSource = { yesterdaysVolume = 172978,
-                   historicFastArrivalsCount = 178360,
-				   historicGoodArrivalsCount = 178361,
-				   historicSlowArrivalsCount = 178362,
-				   historicNoArrivalsCount = 178363,
-				   historicCyclesCount= 178364,
-				   currentModeCountdownSec = 186524,
-				   tubingPressurePSIG = 172971,
-				   casingPressurePSIG = 172970,
-				   linePressurePSIG = 172974} 					 
-in \(neededSources:NeededSources) -> [ { vpids =
+					 
+in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       [] : List Integer
   , vparameterInfo =
       { sources =
@@ -39,7 +30,7 @@ in \(neededSources:NeededSources) -> [ { vpids =
       }
   },
   { vpids =
-      [ +3780 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.historicFastArrivalsCount
@@ -61,21 +52,12 @@ in \(neededSources:NeededSources) -> [ { vpids =
       [ +3785 ] : List Integer
   , vparameterInfo =
       { sources =
-          [ { pid = +178360, location = +2110, company = +42, site = +321 }
-          , { pid = +178361, location = +2110, company = +42, site = +321 }
-          , { pid = +178362, location = +2110, company = +42, site = +321 }
-          , { pid = +178363, location = +2110, company = +42, site = +321 }
-          , { pid = +178364, location = +2110, company = +42, site = +321 }
-          ] : List
-              { pid :
-                  Integer
-              , location :
-                  Integer
-              , company :
-                  Integer
-              , site :
-                  Integer
-              }
+          [ neededSources.historicFastArrivalsCount
+          , neededSources.historicGoodArrivalsCount
+          , neededSources.historicSlowArrivalsCount
+          , neededSources.historicNoArrivalsCount
+          , neededSources.historicCyclesCount
+          ] : List VpidSource
       , name =
           "Yest No Arr Script"
       , desc =
@@ -88,21 +70,13 @@ in \(neededSources:NeededSources) -> [ { vpids =
       [ +3789 ] : List Integer
   , vparameterInfo =
       { sources =
-          [ { pid = +178360, location = +2110, company = +42, site = +321 }
-          , { pid = +178361, location = +2110, company = +42, site = +321 }
-          , { pid = +178362, location = +2110, company = +42, site = +321 }
-          , { pid = +178363, location = +2110, company = +42, site = +321 }
-          , { pid = +178364, location = +2110, company = +42, site = +321 }
-          ] : List
-              { pid :
-                  Integer
-              , location :
-                  Integer
-              , company :
-                  Integer
-              , site :
-                  Integer
-              }
+	      [ neededSources.historicFastArrivalsCount
+          , neededSources.historicGoodArrivalsCount
+          , neededSources.historicSlowArrivalsCount
+          , neededSources.historicNoArrivalsCount
+          , neededSources.historicCyclesCount
+          ] : List VpidSource
+          
       , name =
           "Today Arrivals"
       , desc =
@@ -115,21 +89,12 @@ in \(neededSources:NeededSources) -> [ { vpids =
       [ +3794 ] : List Integer
   , vparameterInfo =
       { sources =
-          [ { pid = +178360, location = +2110, company = +42, site = +321 }
-          , { pid = +178361, location = +2110, company = +42, site = +321 }
-          , { pid = +178362, location = +2110, company = +42, site = +321 }
-          , { pid = +178363, location = +2110, company = +42, site = +321 }
-          , { pid = +178364, location = +2110, company = +42, site = +321 }
-          ] : List
-              { pid :
-                  Integer
-              , location :
-                  Integer
-              , company :
-                  Integer
-              , site :
-                  Integer
-              }
+          [ neededSources.historicFastArrivalsCount
+          , neededSources.historicGoodArrivalsCount
+          , neededSources.historicSlowArrivalsCount
+          , neededSources.historicNoArrivalsCount
+          , neededSources.historicCyclesCount
+          ] : List VpidSource
       , name =
           "Today Fails"
       , desc =
@@ -142,17 +107,9 @@ in \(neededSources:NeededSources) -> [ { vpids =
       [ +3544 ] : List Integer
   , vparameterInfo =
       { sources =
-          [ { pid = +186524, location = +2110, company = +42, site = +321 }
-          ] : List
-              { pid :
-                  Integer
-              , location :
-                  Integer
-              , company :
-                  Integer
-              , site :
-                  Integer
-              }
+          [ neededSources.currentModeCountdownSec
+          ] : List VpidSource
+              
       , name =
           "Current Timer Countdown H.MM"
       , desc =
@@ -165,17 +122,9 @@ in \(neededSources:NeededSources) -> [ { vpids =
       [ +3686 ] : List Integer
   , vparameterInfo =
       { sources =
-          [ { pid = +172971, location = +2110, company = +42, site = +321 }
-          ] : List
-              { pid :
-                  Integer
-              , location :
-                  Integer
-              , company :
-                  Integer
-              , site :
-                  Integer
-              }
+          [ neededSources.tubingPressurePSIG
+          ] : List VpidSource
+              
       , name =
           "Critical Rate"
       , desc =
@@ -185,22 +134,14 @@ in \(neededSources:NeededSources) -> [ { vpids =
       }
   },
   { vpids =
-      [ +3550 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
-          [ { pid = +172970, location = +2110, company = +42, site = +321 }
-          , { pid = +172971, location = +2110, company = +42, site = +321 }
-          , { pid = +172974, location = +2110, company = +42, site = +321 }
-          ] : List
-              { pid :
-                  Integer
-              , location :
-                  Integer
-              , company :
-                  Integer
-              , site :
-                  Integer
-              }
+          [ neededSources.casingPressurePSIG 
+          , neededSources.tubingPressurePSIG 
+          , neededSources.linePressurePSIG 
+          ] : List VpidSource
+              
       , name =
           "Load Factor Setting"
       , desc =
@@ -231,3 +172,50 @@ in \(neededSources:NeededSources) -> [ { vpids =
             Integer
         }
     }
+in let UnrolledSource = {
+                   companyId : Integer,
+				   siteId : Integer,
+				   locationId : Integer,
+                   yesterdaysVolume :Integer,
+                   historicFastArrivalsCount :Integer,
+				   historicGoodArrivalsCount :Integer,
+				   historicSlowArrivalsCount :Integer,
+				   historicNoArrivalsCount :Integer,
+				   historicCyclesCount:Integer,
+				   currentModeCountdownSec :Integer,
+				   tubingPressurePSIG :Integer,
+				   casingPressurePSIG :Integer,
+				   linePressurePSIG :Integer}
+				   
+in let buildNeededSources = \(unrolled:UnrolledSource) -> let
+  buildVpid = \(p:Integer) -> { company = unrolled.companyId,
+                                site    = unrolled.siteId,
+					            location = unrolled.locationId,
+					            pid = p}: VpidSource
+								
+  in { yesterdaysVolume          = buildVpid unrolled.yesterdaysVolume ,
+       historicFastArrivalsCount = buildVpid unrolled.historicFastArrivalsCount,
+	   historicGoodArrivalsCount = buildVpid unrolled.historicGoodArrivalsCount,
+	   historicSlowArrivalsCount = buildVpid unrolled.historicSlowArrivalsCount,
+	   historicNoArrivalsCount   = buildVpid unrolled.historicNoArrivalsCount ,
+	   historicCyclesCount       = buildVpid unrolled.historicCyclesCount,
+	   currentModeCountdownSec   = buildVpid unrolled.currentModeCountdownSec,
+	   tubingPressurePSIG        = buildVpid unrolled.tubingPressurePSIG,
+	   casingPressurePSIG        = buildVpid unrolled.casingPressurePSIG,
+	   linePressurePSIG          = buildVpid unrolled.linePressurePSIG }: NeededSources
+	   
+in let testSource = {
+       companyId = +42,
+	   siteId = +321,
+	   locationId = +2110,
+	   yesterdaysVolume = +172978,
+	   historicFastArrivalsCount = +178360,
+	   historicGoodArrivalsCount = +178361,
+	   historicSlowArrivalsCount = +178362,
+	   historicNoArrivalsCount = +178363,
+	   historicCyclesCount= +178364,
+	   currentModeCountdownSec = +186524,
+	   tubingPressurePSIG = +172971,
+	   casingPressurePSIG = +172970,
+	   linePressurePSIG = +172974} 
+in buildNeededSources testSource
