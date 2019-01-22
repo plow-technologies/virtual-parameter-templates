@@ -172,24 +172,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   }]:List VirtualParameter
 
-in let UnrolledSource = {
-                   companyId : Integer,
-				   siteId : Integer,
-				   locationId : Integer,
-				   locationName : Text,
-				   scadaDataLocationId : Integer,
-                   yesterdaysVolume :Integer,
-                   historicFastArrivalsCount :Integer,
-				   historicGoodArrivalsCount :Integer,
-				   historicSlowArrivalsCount :Integer,
-				   historicNoArrivalsCount :Integer,
-				   historicCyclesCount:Integer,
-				   currentModeCountdownSec :Integer,
-				   tubingPressurePSIG :Integer,
-				   casingPressurePSIG :Integer,
-				   linePressurePSIG :Integer,
-				   plungerArrivalOneTimeSec :Integer,
-				   wellDepth: Integer}
+in let UnrolledSource = ./UnrolledSource.dhall
 				   
 in let buildNeededSources = \(unrolled:UnrolledSource) -> let
   buildVpid = \(p:Integer) -> { company = unrolled.companyId,
