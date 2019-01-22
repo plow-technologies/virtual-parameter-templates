@@ -1,22 +1,7 @@
-let VpidSource = {company:Integer, site:Integer, location:Integer, pid:Integer }
+let VpidSource = ./VpidSource.dhall
 
-in let NeededSources = { yesterdaysVolume:VpidSource,
-                         historicFastArrivalsCount:VpidSource,
-						 historicGoodArrivalsCount:VpidSource,
-						 historicSlowArrivalsCount:VpidSource,
-						 historicNoArrivalsCount:VpidSource,
-						 historicCyclesCount:VpidSource,
-						 currentModeCountdownSec:VpidSource,
-						 tubingPressurePSIG:VpidSource,
-						 casingPressurePSIG:VpidSource,
-						 linePressurePSIG:VpidSource,
-						 plungerArrivalOneTimeSec:VpidSource,
-						 locationName:Text,
-						 wellDepth: VpidSource
-
-						 
-                         }
-				 
+in let NeededSources = ./NeededSources.dhall
+in let VirtualParameter = ./VirtualParameter.dhall
 					 
 in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       [] : List Integer
@@ -53,7 +38,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   },
 { vpids =
-      [] : List Integer
+      [ +3785 ] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.historicFastArrivalsCount
@@ -71,7 +56,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   },
   { vpids =
-      [] : List Integer
+      [ +3789 ] : List Integer
   , vparameterInfo =
       { sources =
 	      [ neededSources.historicFastArrivalsCount
@@ -108,7 +93,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   },
   { vpids =
-      [] : List Integer
+      [ +3544 ] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.currentModeCountdownSec
@@ -171,7 +156,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
   },
   
   { vpids =
-      [] : List Integer
+      [ +2427 ] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.plungerArrivalOneTimeSec
@@ -185,29 +170,8 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       , script =
           +143
       }
-  }]:List
-    { vpids :
-        List Integer
-    , vparameterInfo :
-        { sources :
-            List
-            { pid :
-                Integer
-            , location :
-                Integer
-            , company :
-                Integer
-            , site :
-                Integer
-            }
-        , name :
-            Text
-        , desc :
-            Text
-        , script :
-            Integer
-        }
-    }
+  }]:List VirtualParameter
+
 in let UnrolledSource = {
                    companyId : Integer,
 				   siteId : Integer,
@@ -266,4 +230,4 @@ in let testSource = {
 	   linePressurePSIG = +172974,
 	   plungerArrivalOneTimeSec = +172964,
 	   wellDepth = +351002} 
-in buildNeededSources 
+in \(unrolled:UnrolledSource) -> buildWapitiSet (buildNeededSources  unrolled)
