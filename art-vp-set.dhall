@@ -170,17 +170,9 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       [ +2427 ] : List Integer
   , vparameterInfo =
       { sources =
-          [ { pid = +172964, location = +2110, company = +42, site = +321 }
-          ] : List
-              { pid :
-                  Integer
-              , location :
-                  Integer
-              , company :
-                  Integer
-              , site :
-                  Integer
-              }
+          [ neededSources.plungerArrivalOneTimeSec
+          ] : List VpidSource
+              
       , name =
           "pv1 dss 34 36 9 18 name"
       , desc =
