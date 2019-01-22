@@ -1,7 +1,7 @@
-let VpidSource = ./VpidSource.dhall
+let VpidSource = https://raw.githubusercontent.com/plow-technologies/virtual-parameter-templates/master/VpidSource.dhall
 
-in let NeededSources = ./NeededSources.dhall
-in let VirtualParameter = ./VirtualParameter.dhall
+in let NeededSources = https://raw.githubusercontent.com/plow-technologies/virtual-parameter-templates/master/NeededSources.dhall
+in let VirtualParameter = https://raw.githubusercontent.com/plow-technologies/virtual-parameter-templates/master/VirtualParameter.dhall
 					 
 in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       [] : List Integer
@@ -38,7 +38,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   },
 { vpids =
-      [ +3785 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.historicFastArrivalsCount
@@ -56,7 +56,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   },
   { vpids =
-      [ +3789 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
 	      [ neededSources.historicFastArrivalsCount
@@ -75,7 +75,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   },
   { vpids =
-      [ +3794 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.historicFastArrivalsCount
@@ -93,7 +93,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   },
   { vpids =
-      [ +3544 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.currentModeCountdownSec
@@ -108,7 +108,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   },
   { vpids =
-      [ +3686 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.tubingPressurePSIG
@@ -156,7 +156,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
   },
   
   { vpids =
-      [ +2427 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.plungerArrivalOneTimeSec
@@ -172,7 +172,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   }]:List VirtualParameter
 
-in let UnrolledSource = ./UnrolledSource.dhall
+in let UnrolledSource = https://raw.githubusercontent.com/plow-technologies/virtual-parameter-templates/master/UnrolledSource.dhall
 				   
 in let buildNeededSources = \(unrolled:UnrolledSource) -> let
   buildVpid = \(p:Integer) -> { company = unrolled.companyId,
@@ -195,22 +195,5 @@ in let buildNeededSources = \(unrolled:UnrolledSource) -> let
 	   wellDepth                 = (buildVpid unrolled.wellDepth) //{location = unrolled.scadaDataLocationId }
 	   }: NeededSources
 	   
-in let testSource = {
-       companyId = +42,
-	   siteId = +321,
-	   locationId = +2110,
-	   locationName = "Desert Spring State 034-36-09-18",
-	   scadaDataLocationId = +3487,
-	   yesterdaysVolume = +172978,
-	   historicFastArrivalsCount = +178360,
-	   historicGoodArrivalsCount = +178361,
-	   historicSlowArrivalsCount = +178362,
-	   historicNoArrivalsCount = +178363,
-	   historicCyclesCount= +178364,
-	   currentModeCountdownSec = +186524,
-	   tubingPressurePSIG = +172971,
-	   casingPressurePSIG = +172970,
-	   linePressurePSIG = +172974,
-	   plungerArrivalOneTimeSec = +172964,
-	   wellDepth = +351002} 
+
 in \(unrolled:UnrolledSource) -> buildWapitiSet (buildNeededSources  unrolled)
