@@ -13,6 +13,7 @@ in let NeededSources = { yesterdaysVolume:VpidSource,
 						 plungerArrivalOneTimeSec:VpidSource,
 						 locationName:Text
 						 
+						 
                          }
 				 
 					 
@@ -171,13 +172,37 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       [ +2427 ] : List Integer
   , vparameterInfo =
       { sources =
+          [ { pid = +172964, location = +2110, company = +42, site = +321 }
+          , { pid = +351002, location = +3487, company = +42, site = +321 }
+          ] : List
+              { pid :
+                  Integer
+              , location :
+                  Integer
+              , company :
+                  Integer
+              , site :
+                  Integer
+              }
+      , name =
+          "pv1 dss 34 36 9 18 name"
+      , desc =
+          "pv1 dss 34 36 9 18 desc"
+      , script =
+          +143
+      }
+  },
+  { vpids =
+      [ +2427 ] : List Integer
+  , vparameterInfo =
+      { sources =
           [ neededSources.plungerArrivalOneTimeSec
           ] : List VpidSource
               
       , name =
-          "pv1"
+          "pv1 " ++ neededSources.locationName
       , desc =
-          "pv1"
+          "pv1 " ++ neededSources.locationName
       , script =
           +143
       }
@@ -219,7 +244,8 @@ in let UnrolledSource = {
 				   tubingPressurePSIG :Integer,
 				   casingPressurePSIG :Integer,
 				   linePressurePSIG :Integer,
-				   plungerArrivalOneTimeSec :Integer}
+				   plungerArrivalOneTimeSec :Integer,
+				   wellDepth: Integer}
 				   
 in let buildNeededSources = \(unrolled:UnrolledSource) -> let
   buildVpid = \(p:Integer) -> { company = unrolled.companyId,
@@ -255,5 +281,6 @@ in let testSource = {
 	   tubingPressurePSIG = +172971,
 	   casingPressurePSIG = +172970,
 	   linePressurePSIG = +172974,
-	   plungerArrivalOneTimeSec = +172964} 
+	   plungerArrivalOneTimeSec = +172964,
+	   wellDepth = +351002} 
 in buildNeededSources testSource
