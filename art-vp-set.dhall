@@ -200,7 +200,8 @@ in let UnrolledSource = {
 				   currentModeCountdownSec :Integer,
 				   tubingPressurePSIG :Integer,
 				   casingPressurePSIG :Integer,
-				   linePressurePSIG :Integer}
+				   linePressurePSIG :Integer,
+				   plungerArrivalOneTimeSec :Integer}
 				   
 in let buildNeededSources = \(unrolled:UnrolledSource) -> let
   buildVpid = \(p:Integer) -> { company = unrolled.companyId,
@@ -232,5 +233,6 @@ in let testSource = {
 	   currentModeCountdownSec = +186524,
 	   tubingPressurePSIG = +172971,
 	   casingPressurePSIG = +172970,
-	   linePressurePSIG = +172974} 
+	   linePressurePSIG = +172974,
+	   plungerArrivalOneTimeSec = +172964} 
 in buildNeededSources testSource
