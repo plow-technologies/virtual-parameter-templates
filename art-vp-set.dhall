@@ -12,7 +12,7 @@ in let NeededSources = { yesterdaysVolume:VpidSource,
 						 linePressurePSIG:VpidSource,
 						 plungerArrivalOneTimeSec:VpidSource,
 						 locationName:Text
-						 
+
 						 
                          }
 				 
@@ -234,6 +234,7 @@ in let UnrolledSource = {
 				   siteId : Integer,
 				   locationId : Integer,
 				   locationName : Text,
+				   scadaDataLocationId : Integer,
                    yesterdaysVolume :Integer,
                    historicFastArrivalsCount :Integer,
 				   historicGoodArrivalsCount :Integer,
@@ -271,6 +272,7 @@ in let testSource = {
 	   siteId = +321,
 	   locationId = +2110,
 	   locationName = "Desert Spring State 034-36-09-18",
+	   scadaDataLocationId = +3487,
 	   yesterdaysVolume = +172978,
 	   historicFastArrivalsCount = +178360,
 	   historicGoodArrivalsCount = +178361,
