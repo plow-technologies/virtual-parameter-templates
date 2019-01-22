@@ -53,7 +53,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   },
 { vpids =
-      [ +3785 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.historicFastArrivalsCount
@@ -71,7 +71,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   },
   { vpids =
-      [ +3789 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
 	      [ neededSources.historicFastArrivalsCount
@@ -108,7 +108,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
       }
   },
   { vpids =
-      [ +3544 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.currentModeCountdownSec
@@ -171,7 +171,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
   },
   
   { vpids =
-      [ +2427 ] : List Integer
+      [] : List Integer
   , vparameterInfo =
       { sources =
           [ neededSources.plungerArrivalOneTimeSec
@@ -266,4 +266,4 @@ in let testSource = {
 	   linePressurePSIG = +172974,
 	   plungerArrivalOneTimeSec = +172964,
 	   wellDepth = +351002} 
-in buildNeededSources testSource
+in buildNeededSources 
