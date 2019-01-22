@@ -1,0 +1,18 @@
+{
+companyId : Integer,
+siteId : Integer,
+locationId : Integer,
+locationName : Text,
+scadaDataLocationId : Integer,
+yesterdaysVolume :Integer,
+historicFastArrivalsCount :Integer,
+historicGoodArrivalsCount :Integer,
+historicSlowArrivalsCount :Integer,
+historicNoArrivalsCount :Integer,
+historicCyclesCount:Integer,
+currentModeCountdownSec :Integer,
+tubingPressurePSIG :Integer,
+casingPressurePSIG :Integer,
+linePressurePSIG :Integer,
+plungerArrivalOneTimeSec :Integer,
+wellDepth: Integer}
