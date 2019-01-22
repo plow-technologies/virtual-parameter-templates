@@ -10,7 +10,8 @@ in let NeededSources = { yesterdaysVolume:VpidSource,
 						 tubingPressurePSIG:VpidSource,
 						 casingPressurePSIG:VpidSource,
 						 linePressurePSIG:VpidSource,
-						 plungerArrivalOneTimeSec:VpidSource
+						 plungerArrivalOneTimeSec:VpidSource,
+						 locationName:Text
 						 
                          }
 				 
@@ -174,9 +175,9 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
           ] : List VpidSource
               
       , name =
-          "pv1 dss 34 36 9 18 name"
+          "pv1"
       , desc =
-          "pv1 dss 34 36 9 18 desc"
+          "pv1"
       , script =
           +143
       }
@@ -236,7 +237,8 @@ in let buildNeededSources = \(unrolled:UnrolledSource) -> let
 	   tubingPressurePSIG        = buildVpid unrolled.tubingPressurePSIG,
 	   casingPressurePSIG        = buildVpid unrolled.casingPressurePSIG,
 	   linePressurePSIG          = buildVpid unrolled.linePressurePSIG,
-	   plungerArrivalOneTimeSec  = buildVpid unrolled.plungerArrivalOneTimeSec}: NeededSources
+	   plungerArrivalOneTimeSec  = buildVpid unrolled.plungerArrivalOneTimeSec,
+	   locationName              = unrolled.locationName}: NeededSources
 	   
 in let testSource = {
        companyId = +42,
