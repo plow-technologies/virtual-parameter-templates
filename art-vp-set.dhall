@@ -11,7 +11,8 @@ in let NeededSources = { yesterdaysVolume:VpidSource,
 						 casingPressurePSIG:VpidSource,
 						 linePressurePSIG:VpidSource,
 						 plungerArrivalOneTimeSec:VpidSource,
-						 locationName:Text
+						 locationName:Text,
+						 wellDepth: VpidSource
 
 						 
                          }
@@ -265,7 +266,9 @@ in let buildNeededSources = \(unrolled:UnrolledSource) -> let
 	   casingPressurePSIG        = buildVpid unrolled.casingPressurePSIG,
 	   linePressurePSIG          = buildVpid unrolled.linePressurePSIG,
 	   plungerArrivalOneTimeSec  = buildVpid unrolled.plungerArrivalOneTimeSec,
-	   locationName              = unrolled.locationName}: NeededSources
+	   locationName              = unrolled.locationName,
+	   wellDepth                 = (buildVpid unrolled.wellDepth) //{location = unrolled.scadaDataLocationId }
+	   }: NeededSources
 	   
 in let testSource = {
        companyId = +42,
