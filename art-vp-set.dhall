@@ -9,7 +9,8 @@ in let NeededSources = { yesterdaysVolume:VpidSource,
 						 currentModeCountdownSec:VpidSource,
 						 tubingPressurePSIG:VpidSource,
 						 casingPressurePSIG:VpidSource,
-						 linePressurePSIG:VpidSource
+						 linePressurePSIG:VpidSource,
+						 plungerArrivalOneTimeSec:VpidSource
 						 
                          }
 				 
@@ -218,7 +219,8 @@ in let buildNeededSources = \(unrolled:UnrolledSource) -> let
 	   currentModeCountdownSec   = buildVpid unrolled.currentModeCountdownSec,
 	   tubingPressurePSIG        = buildVpid unrolled.tubingPressurePSIG,
 	   casingPressurePSIG        = buildVpid unrolled.casingPressurePSIG,
-	   linePressurePSIG          = buildVpid unrolled.linePressurePSIG }: NeededSources
+	   linePressurePSIG          = buildVpid unrolled.linePressurePSIG,
+	   plungerArrivalOneTimeSec  = buildVpid unrolled.plungerArrivalOneTimeSec}: NeededSources
 	   
 in let testSource = {
        companyId = +42,
