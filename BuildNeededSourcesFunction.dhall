@@ -139,21 +139,7 @@ in let buildWapitiSet = \(neededSources:NeededSources) -> [ { vpids =
           +200
       }
   },
-  { vpids =
-      [] : List Integer
-  , vparameterInfo =
-      { sources =
-          [ neededSources.yesterdaysVolume
-          ] : List VpidSource
-              
-      , name =
-          "90 Day Max Yest Vol - Rate Overlay"
-      , desc =
-          "90 Day Max Yest Vol - Rate Overlay"
-      , script =
-          +219
-      }
-  },
+  
   
   { vpids =
       [] : List Integer
